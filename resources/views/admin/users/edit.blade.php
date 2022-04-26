@@ -7,11 +7,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Manage Admin</h1>
+            <h1>Manage User</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/admin/admins">Admins</a></li>
+              <li class="breadcrumb-item"><a href="/admin/users">User</a></li>
               <li class="breadcrumb-item active">Edit</li>
             </ol>
           </div>
@@ -26,17 +26,17 @@
           <div class="col-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit Admin</h3>
+                <h3 class="card-title">Edit user</h3>
               </div>
                 <div class="mt-2">
                     {{ Html::ul($errors->all()) }}
                 </div>
-                {{ Form::model($row, array('route' => array('admins.update', $row->id), 'method' => 'PUT', 'files' => true, 'enctype' => 'multipart/form-data')) }}
+                {{ Form::model($row, array('route' => array('users.update', $row->id), 'method' => 'PUT', 'files' => true, 'enctype' => 'multipart/form-data')) }}
 
                 <div class="card-body">
                     <div class="form-group col-6 offset-3">
                         <label for="exampleInputEmail1">Image</label>
-                        <input type="file" data-default-file="{{ $row->getFirstMediaUrl('admins') }}" name="image" class="dropify" data-height="300" />
+                        <input type="file" data-default-file="{{ $row->getFirstMediaUrl('users') }}" name="image" class="dropify" data-height="300" />
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">First Name</label>

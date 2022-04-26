@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Manage Admins</h1>
+            <h1>Manage Restaurants</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Admin</li>
+              <li class="breadcrumb-item active">Restaurant</li>
             </ol>
           </div>
         </div>
@@ -26,7 +26,7 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-4 text-right offset-8">
-                <a href="/admin/admins/create" class="btn btn-primary mb-3">Create</a>
+                <a href="/admin/restaurants/create" class="btn btn-primary mb-3">Create</a>
             </div>
           <div class="col-12">
             <div class="card">
@@ -34,34 +34,23 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Activation</th>
-                    <th>Actions</th>
+                    <th>Name</th>
+                    <th>Place</th>
                   </tr>
                   </thead>
                   <tbody>
                 @foreach ($rows as $row)
                   <tr>
-                    <td>{{ $row->first_name }}</td>
-                    <td>{{ $row->last_name }}</td>
-                    <td>{{ $row->email }}</td>
-                    <td>
-                        @if($row->activation == 1)
-                            <span class="badge col-6 py-2 badge-primary">Active</span>
-                        @else
-                        <span class="badge col-6 py-2 badge-danger">Suspended</span>
-                        @endif
-                    </td>
+                    <td>{{ $row->name }}</td>
+                    <td>{{ $row->place->name }}</td>
                     <td class="d-flex ">
 
-                        {{ Form::open(array('url' => 'admin/admins/' . $row->id . '/edit', 'class' => 'pull-right mr-1')) }}
+                        {{ Form::open(array('url' => 'admin/restaurants/' . $row->id . '/edit', 'class' => 'pull-right mr-1')) }}
                             {{ Form::hidden('_method', 'GET') }}
                             {{ Form::submit('Edit', array('class' => 'btn btn-success')) }}
                         {{ Form::close() }}
 
-                        {{ Form::open(array('url' => 'admin/admins/' . $row->id, 'class' => 'pull-right')) }}
+                        {{ Form::open(array('url' => 'admin/restaurants/' . $row->id, 'class' => 'pull-right')) }}
                             {{ Form::hidden('_method', 'DELETE') }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}

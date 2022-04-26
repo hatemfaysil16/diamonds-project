@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Manage Admins</h1>
+            <h1>Manage users</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Admin</li>
+              <li class="breadcrumb-item active">user</li>
             </ol>
           </div>
         </div>
@@ -26,7 +26,7 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-4 text-right offset-8">
-                <a href="/admin/admins/create" class="btn btn-primary mb-3">Create</a>
+                <a href="/admin/users/create" class="btn btn-primary mb-3">Create</a>
             </div>
           <div class="col-12">
             <div class="card">
@@ -56,12 +56,12 @@
                     </td>
                     <td class="d-flex ">
 
-                        {{ Form::open(array('url' => 'admin/admins/' . $row->id . '/edit', 'class' => 'pull-right mr-1')) }}
+                        {{ Form::open(array('url' => 'admin/users/' . $row->id . '/edit', 'class' => 'pull-right mr-1')) }}
                             {{ Form::hidden('_method', 'GET') }}
                             {{ Form::submit('Edit', array('class' => 'btn btn-success')) }}
                         {{ Form::close() }}
 
-                        {{ Form::open(array('url' => 'admin/admins/' . $row->id, 'class' => 'pull-right')) }}
+                        {{ Form::open(array('url' => 'admin/users/' . $row->id, 'class' => 'pull-right')) }}
                             {{ Form::hidden('_method', 'DELETE') }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}

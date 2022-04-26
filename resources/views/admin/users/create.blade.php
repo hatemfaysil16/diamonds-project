@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Manage Admin</h1>
+            <h1>Manage user</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/admin/admins">Admins</a></li>
-              <li class="breadcrumb-item active">Edit</li>
+              <li class="breadcrumb-item"><a href="/admin/users">users</a></li>
+              <li class="breadcrumb-item active">Create</li>
             </ol>
           </div>
         </div>
@@ -26,39 +26,38 @@
           <div class="col-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit Admin</h3>
+                <h3 class="card-title">Create user</h3>
               </div>
                 <div class="mt-2">
                     {{ Html::ul($errors->all()) }}
                 </div>
-                {{ Form::model($row, array('route' => array('admins.update', $row->id), 'method' => 'PUT', 'files' => true, 'enctype' => 'multipart/form-data')) }}
-
+              {{ Form::open(array('url' => 'admin/users', 'files' => true, 'enctype' => 'multipart/form-data')) }}
                 <div class="card-body">
                     <div class="form-group col-6 offset-3">
                         <label for="exampleInputEmail1">Image</label>
-                        <input type="file" data-default-file="{{ $row->getFirstMediaUrl('admins') }}" name="image" class="dropify" data-height="300" />
+                        <input type="file" name="image" class="dropify" data-height="300" />
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">First Name</label>
-                        <input type="text" value="{{ $row->first_name }}" class="form-control" name="first_name" placeholder="First Name">
+                        <input type="text" class="form-control" name="first_name" placeholder="First Name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Last Name</label>
-                        <input type="text" value="{{ $row->last_name }}" class="form-control" name="last_name" placeholder="Last Name">
+                        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
                     </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" value="{{ $row->email }}" class="form-control" name="email" placeholder="Enter email">
+                    <input type="email" class="form-control" name="email" placeholder="Enter email">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" autocomplete="new-password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
                   </div>
                   <div class="form-group col-2 px-0">
                     <label>Activation</label>
                     <select name="activation" class="form-control select2">
-                      <option value="1" {{ ($row->activation) ? 'selected' : '' }} >Active</option>
-                      <option value="0" {{ ($row->activation) ? '' : 'selected' }} >Suspended</option>
+                      <option value="1">Active</option>
+                      <option value="0">Suspended</option>
                     </select>
                   </div>
                   <div class="float-right">

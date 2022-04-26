@@ -2,43 +2,38 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Models\Admin;
+use App\Http\Controllers\Controller;;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
-    public function dashboard()
-    {
-        return view('admin.dashboard');
-    }
 
     public function index()
     {
-        $rows = Admin::get();
-        return view('admin.admins.index', compact('rows'));
+        $rows = User::get();
+        return view('admin.users.index', compact('rows'));
     }
 
 
     public function create()
     {
-        return view('admin.admins.create');
+        return view('admin.users.create');
     }
 
     public function store(Request $request)
-    {
+    { 
         $request->validate([
             'first_name'    => ['required', 'string', 'max:255'],
             'last_name'     => ['required', 'string', 'max:255'],
-            'email'         => ['required', 'string', 'email', 'max:255', 'unique:admins'],
+            'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'      => ['required', 'string', 'min:8'],
             'activation'    => ['required'],
         ]);
 
-        $admin = Admin::create([
+        $user = User::create([
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'email' => $request['email'],
@@ -46,27 +41,27 @@ class AdminController extends Controller
             'activation'    => $request['activation'],
         ]);
 
-        $admin->addMediaFromRequest('image')->toMediaCollection('admins');
+        $user->addMediaFromRequest('image')->toMediaCollection('users');
 
 
         Session::flash('result', 2); 
-        return redirect('/admin/admins');
+        return redirect('/admin/users');
 
     }
 
     public function edit($id)
     {
-        $row = Admin::find($id);
+        $row = User::find($id);
 
-        return view('admin.admins.edit', compact('row'));
+        return view('admin.users.edit', compact('row'));
     }
 
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, User $user)
     {
         $request->validate([
             'first_name'    => ['required', 'string', 'max:255'],
             'last_name'     => ['required', 'string', 'max:255'],
-            'email'         => 'required|string|email|max:255|unique:admins,email,' . $admin->id,
+            'email'         => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password'      => ['nullable', 'string', 'min:8'],
             'activation'    => ['required'],
         ]);
@@ -76,22 +71,22 @@ class AdminController extends Controller
 
         $request['password'] = Hash::make($request['password']);
 
-        $admin->update($request->all());
+        $user->update($request->all());
 
         if($request->image){
-            $admin->clearMediaCollection('admins');
-            $admin->addMediaFromRequest('image')->toMediaCollection('admins');
+            $user->clearMediaCollection('users');
+            $user->addMediaFromRequest('image')->toMediaCollection('users');
         }
 
         Session::flash('result', 3); 
-        return redirect('/admin/admins');
+        return redirect('/admin/users');
     }
 
-    public function destroy(Admin $admin)
+    public function destroy(User $user)
     {
-        $admin->delete();
+        $user->delete();
         Session::flash('result', 1); 
-        return redirect('/admin/admins');
+        return redirect('/admin/users');
     }
 
 
