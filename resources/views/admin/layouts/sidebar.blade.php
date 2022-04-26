@@ -11,8 +11,6 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
@@ -61,7 +59,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fa fa-globe"></i>
             <p>
               Places
               <i class="right fas fa-angle-left"></i>
@@ -84,7 +82,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fas fa-utensils"></i>
             <p>
               Restaurants
               <i class="right fas fa-angle-left"></i>
@@ -107,7 +105,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fas fa-hotel"></i>
             <p>
               Hotels
               <i class="right fas fa-angle-left"></i>
@@ -130,7 +128,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fas fa-bed"></i>
             <p>
               Rooms
               <i class="right fas fa-angle-left"></i>
@@ -153,7 +151,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fab fa-fort-awesome"></i>
             <p>
               Villages
               <i class="right fas fa-angle-left"></i>
@@ -176,7 +174,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fas fa-store"></i>
             <p>
               Stores
               <i class="right fas fa-angle-left"></i>
@@ -199,7 +197,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fas fa-hospital"></i>
             <p>
               Hospitals
               <i class="right fas fa-angle-left"></i>
@@ -222,7 +220,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+            <i class="nav-icon fas fa-shopping-bag"></i>
             <p>
               Orders
               <i class="right fas fa-angle-left"></i>

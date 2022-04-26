@@ -15,8 +15,6 @@
   <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   <!-- overlayScrollbars -->
@@ -53,8 +51,6 @@
   <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
-  <script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-  <script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
   <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
   <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
   <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -63,8 +59,14 @@
   <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
   <script src="{{ asset('dist/js/adminlte.js') }}"></script>
   <script src="{{ asset('dist/js/demo.js') }}"></script>
-  <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(document).on('click', '.push-class', function() {
+        $('.sidebar-mini').toggleClass('sidebar-closed sidebar-collapse');
+      })
+    });
+  </script>
 @stack('script')
 </body>
 </html>

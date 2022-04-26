@@ -31,6 +31,7 @@ class RestaurantController extends Controller
             'description'       => ['required', 'string', 'max:2000'],
             'address_details'   => ['required', 'string', 'max:2000'],
             'image'             => ['required', 'mimes:jpg,jpeg,png'],
+            'place_id'          => ['required', 'exists:places,id'],
         ]);
 
         $restaurant = Restaurant::create([
@@ -58,10 +59,11 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
         $request->validate([
-            'name'    => ['required', 'string', 'max:255'],
-            'description'       => $request['description'],
-            'address_details'   => $request['address_details'],
-            'place_id'          => $request['place_id'],
+            'name'              => ['required', 'string', 'max:255'],
+            'description'       => ['required', 'string', 'max:2000'],
+            'address_details'   => ['required', 'string', 'max:2000'],
+            'image'             => ['mimes:jpg,jpeg,png'],
+            'place_id'          => ['required', 'exists:places,id'],
         ]);
 
         $restaurant->update($request->all());

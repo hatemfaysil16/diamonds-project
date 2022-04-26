@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin','middleware' => 'guest:admin', 'namespace' => 
 });
 
 Route::group(['prefix' => 'admin','middleware' => 'admin:auth', 'namespace' => 'Admin'], function () {
-	Route::get('dashboard','AdminController@dashboard')->name('dashboard');	
+	Route::get('dashboard','DashboardController@index')->name('dashboard');	
     Route::resource('admins', 'AdminController');
     Route::resource('users', 'UserController');
     Route::resource('places', 'PlaceController');

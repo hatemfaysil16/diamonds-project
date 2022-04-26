@@ -32,6 +32,7 @@ class HotelController extends Controller
             'description'       => ['required', 'string', 'max:2000'],
             'address_details'   => ['required', 'string', 'max:2000'],
             'image'             => ['required', 'mimes:jpg,jpeg,png'],
+            'place_id'          => ['required', 'exists:places,id'],
         ]);
 
         $hotel = Hotel::create([
@@ -60,6 +61,7 @@ class HotelController extends Controller
     {
         $request->validate([
             'name'    => ['required', 'string', 'max:255'],
+            'image'             => ['mimes:jpg,jpeg,png'],
         ]);
 
         $hotel->update($request->all());
@@ -84,7 +86,8 @@ class HotelController extends Controller
     {
         $request->validate([
             'images'             => ['required'],
-            'images.*'             => ['required', 'mimes:jpg,jpeg,png'],
+            'images.*'           => ['required', 'mimes:jpg,jpeg,png'],
+            'place_id'           => ['required', 'exists:places,id'],
         ]);
 
         $hotel = Hotel::find($id);
@@ -104,9 +107,6 @@ class HotelController extends Controller
         $uuid = $request->uuid;
 
         DB::table('media')->where('uuid', $uuid)->delete();
-
-        Session::flash('result', 3); 
-        // return redirect('/admin/hotels');
     }
 
 
