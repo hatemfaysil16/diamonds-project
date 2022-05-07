@@ -54,8 +54,8 @@
                 <div class="form-group col-2 px-0">
                   <label>Places</label>
                   <select name="village_id" class="form-control select2">
-                    @foreach ($villages as $village)
-                      <option {{ ($village->id == $row->village_id) ? 'selected' : '' }} value="{{ $village->id }}">{{ $village->name }}</option>
+                    @foreach ($villages as $value)
+                      <option {{ ($value->id == $row->village_id) ? 'selected' : '' }} value="{{ $value->id }}">{{ $value->name }}</option>
                     @endforeach
                   </select>
                 </div>

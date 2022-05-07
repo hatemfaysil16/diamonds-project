@@ -7,6 +7,7 @@ use App\Models\Place;
 use App\models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use DB;
 
 class RestaurantController extends Controller
 {
@@ -25,7 +26,7 @@ class RestaurantController extends Controller
     }
 
     public function store(Request $request)
-    { 
+    {
         $request->validate([
             'name'              => ['required', 'string', 'max:255'],
             'description'       => ['required', 'string', 'max:2000'],
@@ -46,7 +47,6 @@ class RestaurantController extends Controller
 
         Session::flash('result', 2);
         return redirect('/admin/restaurants');
-
     }
 
     public function edit($id)
@@ -68,23 +68,48 @@ class RestaurantController extends Controller
 
         $restaurant->update($request->all());
 
-        if($request->image){
+        if ($request->image) {
             $restaurant->clearMediaCollection('restaurants');
             $restaurant->addMediaFromRequest('image')->toMediaCollection('restaurants');
         }
 
-        Session::flash('result', 3); 
+        Session::flash('result', 3);
         return redirect('/admin/restaurants');
     }
 
     public function destroy(Restaurant $restaurant)
     {
         $restaurant->delete();
-        Session::flash('result', 1); 
+        Session::flash('result', 1);
         return redirect('/admin/restaurants');
     }
 
 
 
+    public function insertPhotos(Request $request, $id)
+    {
+        $request->validate([
+            'images'             => ['required'],
+            'images.*'           => ['required', 'mimes:jpg,jpeg,png'],
+            // 'place_id'           => ['required', 'exists:places,id'],
+        ]);
 
+        $restautant = Restaurant::find($id);
+        if ($request->hasFile('images')) {
+            $fileAdders = $restautant->addMultipleMediaFromRequest(['images'])
+                ->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('restaurant-gallery');
+                });
+        }
+
+        Session::flash('result', 3);
+        return redirect('/admin/restaurants');
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $uuid = $request->uuid;
+
+        DB::table('media')->where('uuid', $uuid)->delete();
+    }
 }

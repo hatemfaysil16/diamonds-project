@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hospital;
-use App\Models\Village;
+use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -21,18 +21,18 @@ class HospitalController extends Controller
 
     public function create()
     {
-        $villages = Village::get();
+        $villages = Place::get();
         return view('admin.hospitals.create', compact('villages'));
     }
 
     public function store(Request $request)
-    { 
+    {
         $request->validate([
             'name'              => ['required', 'string', 'max:255'],
             'description'       => ['required', 'string', 'max:2000'],
             'address_details'   => ['required', 'string', 'max:2000'],
             'image'             => ['required', 'mimes:jpg,jpeg,png'],
-            'village_id'        => ['required', 'exists:villages,id']
+            'village_id'        => ['required', 'exists:places,id']
         ]);
 
         $hospital = Hospital::create([
@@ -47,13 +47,12 @@ class HospitalController extends Controller
 
         Session::flash('result', 2);
         return redirect('/admin/hospitals');
-
     }
 
     public function edit($id)
     {
         $row = Hospital::find($id);
-        $villages = Village::get();
+        $villages = Place::get();
         return view('admin.hospitals.edit', compact('row', 'villages'));
     }
 
@@ -63,24 +62,24 @@ class HospitalController extends Controller
             'name'              => ['required', 'string', 'max:255'],
             'description'       => ['required', 'string', 'max:2000'],
             'address_details'   => ['required', 'string', 'max:2000'],
-            'village_id'        => ['required', 'exists:villages,id'],
+            'village_id'        => ['required', 'exists:places,id'],
         ]);
 
         $hospital->update($request->all());
 
-        if($request->image){
+        if ($request->image) {
             $hospital->clearMediaCollection('hospitals');
             $hospital->addMediaFromRequest('image')->toMediaCollection('hospitals');
         }
 
-        Session::flash('result', 3); 
+        Session::flash('result', 3);
         return redirect('/admin/hospitals');
     }
 
     public function destroy(Hospital $hospital)
     {
         $hospital->delete();
-        Session::flash('result', 1); 
+        Session::flash('result', 1);
         return redirect('/admin/hospitals');
     }
 
@@ -99,7 +98,7 @@ class HospitalController extends Controller
                 });
         }
 
-        Session::flash('result', 3); 
+        Session::flash('result', 3);
         return redirect('/admin/hospitals');
     }
 
@@ -109,7 +108,4 @@ class HospitalController extends Controller
 
         DB::table('media')->where('uuid', $uuid)->delete();
     }
-
-
-
 }

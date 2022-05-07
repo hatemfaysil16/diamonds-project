@@ -26,7 +26,7 @@ class HotelController extends Controller
     }
 
     public function store(Request $request)
-    { 
+    {
         $request->validate([
             'name'              => ['required', 'string', 'max:255'],
             'description'       => ['required', 'string', 'max:2000'],
@@ -47,7 +47,6 @@ class HotelController extends Controller
 
         Session::flash('result', 2);
         return redirect('/admin/hotels');
-
     }
 
     public function edit($id)
@@ -66,19 +65,19 @@ class HotelController extends Controller
 
         $hotel->update($request->all());
 
-        if($request->image){
+        if ($request->image) {
             $hotel->clearMediaCollection('hotels');
             $hotel->addMediaFromRequest('image')->toMediaCollection('hotels');
         }
 
-        Session::flash('result', 3); 
+        Session::flash('result', 3);
         return redirect('/admin/hotels');
     }
 
     public function destroy(Hotel $hotel)
     {
         $hotel->delete();
-        Session::flash('result', 1); 
+        Session::flash('result', 1);
         return redirect('/admin/hotels');
     }
 
@@ -87,7 +86,7 @@ class HotelController extends Controller
         $request->validate([
             'images'             => ['required'],
             'images.*'           => ['required', 'mimes:jpg,jpeg,png'],
-            'place_id'           => ['required', 'exists:places,id'],
+            // 'place_id'           => ['required', 'exists:places,id'],
         ]);
 
         $hotel = Hotel::find($id);
@@ -98,7 +97,7 @@ class HotelController extends Controller
                 });
         }
 
-        Session::flash('result', 3); 
+        Session::flash('result', 3);
         return redirect('/admin/hotels');
     }
 
@@ -108,7 +107,4 @@ class HotelController extends Controller
 
         DB::table('media')->where('uuid', $uuid)->delete();
     }
-
-
-
 }

@@ -9,11 +9,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Hospital extends Model implements HasMedia
 {
     use InteractsWithMedia;
-    
+
     protected $fillable = ['name', 'description', 'address_details', 'village_id'];
 
-    public function village()
+    public function place()
     {
-        return $this->belongsTo(Village::class);
+        return $this->belongsTo(Place::class, 'village_id');
     }
 }

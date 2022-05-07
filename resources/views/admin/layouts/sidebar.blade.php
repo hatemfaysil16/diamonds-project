@@ -153,7 +153,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fab fa-fort-awesome"></i>
             <p>
-              Villages
+              Villas
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>

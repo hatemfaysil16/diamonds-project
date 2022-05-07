@@ -70,5 +70,88 @@
         </div>
       </div>
     </section>
-  </div>
-@endsection
+    <section class="content">
+        <section class="content">
+          <section class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1>Gallery</h1>
+                </div>
+              </div>
+            </div><!-- /.container-fluid -->
+          </section>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card card-primary py-3">
+                <div class="card-header">
+                  <h3 class="card-title">ADD PHOTOS</h3>
+                </div>
+                  <div class="mt-2">
+                      {{ Html::ul($errors->all()) }}
+                  </div>
+                {{ Form::open(array('url' => 'admin/restaurants/actions/images/' . $row->id , 'files' => true, 'enctype' => 'multipart/form-data')) }}
+                    <div class="container-fluid">
+                      <div class="row d-flex align-items-center p-3">
+                        @if(!$row->getMedia('restaurant-gallery')->count())
+                        <div class="form-group image col-3">
+                          <input type="file" name="images[]" class="dropify" />
+                        </div>
+                        @endif
+                        @foreach ($row->getMedia('restaurant-gallery') as $image)
+                        <div class="form-group image col-3">
+                          <input type="file" disabled value="{{ $image->uuid }}" data-default-file="{{ $image->getFullUrl() }}" name="images[]" class="dropify" />
+                        </div>
+                        @endforeach
+                        <div class="form-group plus-holder col-3">
+                          <span class="pointer plus">
+                            <img style="cursor: pointer" width="30" height="30" src="{{ asset('icons/plus.png') }}">
+                          </span>
+                        </div>
+                      </div>
+                      <div class="float-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                  </div>
+                  {{ Form::close() }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  @endsection
+
+
+  @push('script')
+    <script>
+      $(document).ready(function() {
+        setTimeout(() => {
+          $('<button type="button" class="dropify-clear">Remove</button>').insertAfter('.dropify');
+        }, 1000);
+        $(document).on('click', '.plus', function() {
+          $('<div class="form-group image col-3"><input type="file" name="images[]" class="dropify" multiple/></div>').insertBefore('.plus-holder');
+          $('.dropify').dropify();
+          });
+        $(document).on('click', '.dropify-clear', function() {
+          $(this).parent().parent().remove();
+          $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+          jQuery.ajax({
+            url: "{{ url('admin/restaurants/actions/deleteImage') }}",
+            method: 'post',
+            data: {
+              "_token": "{{ csrf_token() }}",
+              uuid: $(this).prev("input").attr("value")
+          },
+            success: function(result){
+              toastr.error('Deleted!');
+            }});
+          });
+      });
+    </script>
+  @endpush

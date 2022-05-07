@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Manage Villages</h1>
+            <h1>Manage Villas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -20,7 +20,7 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    
+
 
     <section class="content">
       <div class="container-fluid">

@@ -19,7 +19,7 @@ class CreateHospitalsTable extends Migration
             $table->text('description')->nullable();
             $table->text('address_details')->nullable();
             $table->unsignedBigInteger('village_id')->nullable();
-            $table->foreign('village_id')->references('id')->on('villages')->onDelete('cascade');
+            $table->foreign('village_id')->references('id')->on('places')->onDelete('cascade');
             $table->timestamps();
         });
     }

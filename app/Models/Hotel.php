@@ -9,11 +9,16 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Hotel extends Model implements HasMedia
 {
     use InteractsWithMedia;
-    
+
     protected $fillable = ['name', 'description', 'address_details', 'place_id'];
 
     public function place()
     {
         return $this->belongsTo(Place::class);
+    }
+
+    public function rooms()
+    {
+        return $this->hasMany(HotelRoom::class, 'hotel_id');
     }
 }

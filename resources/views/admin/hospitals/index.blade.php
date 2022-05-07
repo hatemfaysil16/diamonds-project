@@ -20,7 +20,7 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    
+
 
     <section class="content">
       <div class="container-fluid">
@@ -42,7 +42,7 @@
                 @foreach ($rows as $row)
                   <tr>
                     <td>{{ $row->name }}</td>
-                    <td>{{ $row->village->name }}</td>
+                    <td>{{ $row->place->name }}</td>
                     <td class="d-flex ">
 
                         {{ Form::open(array('url' => 'admin/hospitals/' . $row->id . '/edit', 'class' => 'pull-right mr-1')) }}
