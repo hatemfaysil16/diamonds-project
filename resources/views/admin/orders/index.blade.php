@@ -20,7 +20,7 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    
+
 
     <section class="content">
       <div class="container-fluid">
@@ -31,7 +31,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Item Type</th>
+
                     <th>Order REF</th>
                     <th>Price</th>
                     <th>Status</th>
@@ -40,16 +40,15 @@
                   <tbody>
                 @foreach ($rows as $row)
                   <tr>
-                    <td class="text-capitalize">{{ $row->item_type }}</td>
+
                     <td>{{ $row->order_ref }}</td>
                     <td>{{ $row->price }}</td>
                     <td>
                       @if($row->order_status == 1)
-                          <span class="badge col-6 py-2 badge-primary">Pending</span>
-                      @elseIf($row->order_status == 2)
-                          <span class="badge col-6 py-2 badge-danger">Processed</span>
+                      <span class="badge col-6 py-2 badge-success">Paid</span>
+
                       @else
-                          <span class="badge col-6 py-2 badge-success">Paid</span>
+                      <span class="badge col-6 py-2 badge-primary">Pending</span>
                       @endif
                   </td>
                     <td class="d-flex ">

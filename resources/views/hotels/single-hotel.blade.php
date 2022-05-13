@@ -67,10 +67,14 @@
 
             </div>
             <div class="mt-2">
-              <a href="#" class="btn btn-primary">
+                <form id="booking-form" action="{{ route('booking.room', $room->id) }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+              <button onclick="event.preventDefault();
+              document.getElementById('booking-form').submit();" class="btn btn-primary">
                 Booking
 
-              </a>
+            </button>
             </div>
           </div>
         </div>

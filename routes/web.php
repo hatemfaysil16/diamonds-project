@@ -23,6 +23,9 @@ Route::group(['prefix' => '/'], function () {
     Route::group(['prefix' => 'hotels'], function () {
         Route::get("/", 'HomeController@hotels');
         Route::get("/{id}", "HomeController@singleHotel");
+
+
+        Route::post('/{id}', "HomeController@bookingRoom")->middleware('auth')->name('booking.room');
     });
 
     Route::group(['prefix' => 'villas'], function () {
@@ -55,6 +58,9 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function () {
 
 
     Route::get('/cart', 'ProfileController@cart')->name('dashboard.cart');
+    Route::get('/cart/{id}', 'ProfileController@deleteCart')->name('dashboard.cart.delete');
+    Route::post('/cart/charge', 'ProfileController@charge')->name('dashboard.cart.charge');
+
     Route::get('/bookings', 'ProfileController@bookings')->name('dashboard.bookings');
 });
 
@@ -66,6 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin', 'namespace' =>
 
 Route::get('search_results', 'HomeController@searchResults');
 
+// Admin Area
 Route::group(['prefix' => 'admin', 'middleware' => 'admin:auth', 'namespace' => 'Admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('admins', 'AdminController');

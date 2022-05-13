@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Hospital;
 use App\Models\Hotel;
+use App\Models\HotelRoom;
 use App\Models\Restaurant;
 use App\Models\Store;
 use App\Models\Village;
 use Illuminate\Http\Request;
-use DB;
+use DB, Auth;
 
 class HomeController extends Controller
 {
@@ -44,6 +46,14 @@ class HomeController extends Controller
         $hotel = Hotel::findOrFail($id);
 
         return view('hotels.single-hotel', compact('hotel'));
+    }
+
+    public function bookingRoom($id)
+    {
+        $room = HotelRoom::findOrFail($id);
+
+        Cart::create(['room_id' => $room->id, 'hotel_id' => $room->hotel_id, 'user_id' => Auth::id()]);
+        return redirect()->route('dashboard.cart');
     }
 
     public function villas(Request $request)

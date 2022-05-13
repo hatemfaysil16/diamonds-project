@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+  @yield('head')
 </head>
 
 <body class="{{ url()->current() != url('/')? 'bg-light' : '' }}">
@@ -175,6 +177,7 @@
   <script src="{{ asset('js/dropify.min.js') }}"></script>
   <script src="{{ asset('js/slick.min.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
+  @yield('scripts')
 </body>
 
 </html>

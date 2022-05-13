@@ -19,7 +19,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Title</th>
+          <th scope="col">Hotel Title</th>
+          <th scope="col">Room Code</th>
           <th scope="col">Item Type</th>
           <th scope="col">Price</th>
           <th scope="col">Actions</th>
@@ -27,58 +28,71 @@
         </tr>
       </thead>
       <tbody>
+          @php
+              $count = 0;
+              $totalPrice = 0;
+              $cartIds = [];
+          @endphp
+          @foreach($items as $item)
+          @php
+              $totalPrice += $item->room->price;
+              array_push($cartIds, $item->id);
+          @endphp
         <tr>
-          <th scope="row">1</th>
-          <td>Hotel Title</td>
-          <td>Hotel</td>
-          <td>$12.00</td>
+          <th scope="row">{{ ++$count }}</th>
+          <td>{{ $item->hotel->name }}</td>
+          <td>{{ $item->room->code }}</td>
+          <td>Room</td>
+          <td>${{ $item->room->price }}</td>
           <td>
-            <button class="btn btn-danger">
+            <a class="btn btn-danger" href="{{ route('dashboard.cart.delete', $item->id) }}">
               <i class="fa fa-trash"></i>
               Delete
-            </button>
+            </a>
           </td>
         </tr>
+        @endforeach
 
 
-        <tr>
-          <th scope="row">2</th>
-          <td>Hotel Title</td>
-          <td>Hotel</td>
-          <td>$12.00</td>
-          <td>
-            <button class="btn btn-danger">
-              <i class="fa fa-trash"></i>
-              Delete
-            </button>
-          </td>
-        </tr>
 
-        <tr>
-          <th scope="row">3</th>
-          <td>Hotel Title</td>
-          <td>Hotel</td>
-          <td>$12.00</td>
-          <td>
-            <button class="btn btn-danger">
-              <i class="fa fa-trash"></i>
-              Delete
-            </button>
-          </td>
-        </tr>
 
       </tbody>
     </table>
   </div>
 
   <div class="col-xl-12">
+      @if($totalPrice > 0)
     <div class="text-right">
-      <button class="btn btn-success">
-        Checkout $36
+      {{--  <button class="btn btn-success" {{  $totalPrice > 0 ? '':'disabled' }}>
+        Checkout ${{ $totalPrice }}
         <i class="fa fa-angle-double-right"></i>
-      </button>
+      </button>  --}}
+      <form action="{{ route('dashboard.cart.charge') }}" method="POST">
+          @csrf
+          <input type="hidden" name="item_ids" value="{{ implode(',', $cartIds) }}" />
+          <input type="hidden" name="price" value="{{ $totalPrice }}" />
+
+        <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="{{ env('STRIPE_PUB_KEY') }}"
+                data-amount="{{ $totalPrice }}"
+                data-name="Diamonds Village"
+                data-description="Booking Room In Hotel"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto"
+                data-currency="usd">
+        </script>
+    </form>
     </div>
+    @endif
   </div>
 </div>
+
+
+
 <!-- End Content -->
+@endsection
+
+@section('scripts')
+
 @endsection

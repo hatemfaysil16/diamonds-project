@@ -18,8 +18,9 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
+          <th scope="col">Booking Reference</th>
+          <th scope="col">Hotel Title</th>
+          <th scope="col">Room Code</th>
           <th scope="col">Item Type</th>
           <th scope="col">Price</th>
           <th scope="col">Booking status</th>
@@ -27,53 +28,24 @@
         </tr>
       </thead>
       <tbody>
+        @foreach($orders as $row)
+
         <tr>
-          <th scope="row">1</th>
-          <td>Hotel Title</td>
-          <td>Hotel</td>
-          <td>$12.00</td>
+          <th scope="row">{{ $row->order_ref }}</th>
+          <td>{{ $row->hotel->name }}</td>
+          <td>{{ $row->room->code }}</td>
+          <td>Hotel Room</td>
+          <td>${{ $row->price }}</td>
           <td>
-            <span class="badge badge-warning">Pending</span>
+            <span class="badge badge-warning">{{ $row->order_status == 1 ? 'Paid' : 'Pending' }}</span>
 
           </td>
 
         </tr>
+        @endforeach
 
 
-        <tr>
-          <th scope="row">2</th>
-          <td>Hotel Title</td>
-          <td>Hotel</td>
-          <td>$12.00</td>
-          <td>
-            <span class="badge badge-primary">Active</span>
-          </td>
 
-        </tr>
-
-        <tr>
-          <th scope="row">3</th>
-          <td>Hotel Title</td>
-          <td>Hotel</td>
-          <td>$12.00</td>
-          <td>
-            <span class="badge badge-info">Processed</span>
-
-          </td>
-
-        </tr>
-
-        <tr>
-          <th scope="row">4</th>
-          <td>Hotel Title</td>
-          <td>Hotel</td>
-          <td>$12.00</td>
-          <td>
-            <span class="badge badge-danger">Cancelled</span>
-
-          </td>
-
-        </tr>
 
       </tbody>
     </table>
