@@ -13,13 +13,13 @@
           <div class="col-md-6 col-12 col-md-offset-3">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title text-center text-primary">Login</h5>
+                <h5 class="card-title text-center text-primary">{{__('frontend/Authentication/login.Login')}}</h5>
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
                   <div class="form-group">
-                    <label for="email">Email address</label>
+                    <label for="email">{{__('frontend/Authentication/login.EmailAddress')}}</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                      placeholder="Enter email" name="email">
+                      placeholder="{{__('frontend/Authentication/login.EnterEmail')}}" name="email">
                     {{--  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                       else.</small>  --}}
 
@@ -30,12 +30,12 @@
                       @endif
                   </div>
                   <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    <label for="password">{{__('frontend/Authentication/login.Password')}}</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="{{__('frontend/Authentication/login.Password')}}">
+                    
                   </div>
                   <div class=" form-group font-text-8 d-flex align-items-center">
-                    <a href="{{ route('password.request') }}" class="form-check-label font-bold primary pointer">Forget Password
-                      ?</a>
+                    <a href="{{ route('password.request') }}" class="form-check-label font-bold primary pointer">{{__('frontend/Authentication/login.ForgetPassword')}}</a>
 
                       @if ($errors->has('password'))
                       <span class="help-block font-red-mint">
@@ -48,13 +48,13 @@
 
                   <div class="w-100 text-center">
 
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">{{__('frontend/Authentication/login.Login')}}</button>
                   </div>
                 </form>
 
                 <div class="text-center border-top mt-4 pt-4">
-                  <p class="font-text-8">Don't have an account ? <a href="{{ url('/register') }}"
-                      class="underline font-weight-bolder pointer secondary">Create Account</a>
+                  <p class="font-text-8">{{__('frontend/Authentication/login.NewRegister')}} <a href="{{ url('/register') }}"
+                      class="underline font-weight-bolder pointer secondary">{{__('frontend/Authentication/login.CreateAccount')}}</a>
                   </p>
                 </div>
               </div>

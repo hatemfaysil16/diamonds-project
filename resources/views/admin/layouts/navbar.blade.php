@@ -8,6 +8,17 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/admin/dashboard" class="nav-link">Home</a>
       </li>
+
+      {{--start button Locale --}}
+      <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"   aria-haspopup="true" aria-expanded="false">
+        @if (App::getLocale() == 'ar')
+        اللغة العربية - AR
+        @else
+          English - EN
+        @endif
+      </button>
+    {{--end button Locale --}}
+
     </ul>
   </nav>
   <!-- /.navbar -->

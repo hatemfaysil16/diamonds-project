@@ -28,16 +28,18 @@ class StoreController extends Controller
     public function store(Request $request)
     { 
         $request->validate([
-            'name'              => ['required', 'string', 'max:255'],
-            'description'       => ['required', 'string', 'max:2000'],
+            'name_ar'    => ['required', 'string', 'max:255'],
+            'name_en'    => ['required', 'string', 'max:255'],
+            'description_ar'       => ['required', 'string', 'max:2000'],
+            'description_en'       => ['required', 'string', 'max:2000'],
             'address_details'   => ['required', 'string', 'max:2000'],
             'image'             => ['required', 'mimes:jpg,jpeg,png'],
             'place_id'          => ['required', 'exists:places,id'],
         ]);
 
         $store = Store::create([
-            'name'              => $request['name'],
-            'description'       => $request['description'],
+            'name' => ['ar'=>$request['name_ar'],'en'=>$request['name_en']],
+            'description' => ['ar'=>$request['description_ar'],'en'=>$request['description_en']],
             'address_details'   => $request['address_details'],
             'place_id'          => $request['place_id'],
         ]);

@@ -3,7 +3,7 @@
 @section('dashboard')
 <!-- Start Content -->
 <div class="col-12 d-flex d-inline justify-content-between pr-0">
-  <h4 class="font-bold secondary">Update Password</h4>
+  <h4 class="font-bold secondary">{{__('frontend/profile.UpdatePassword')}}</h4>
   <button class="btn d-xl-none pt-0" type="button" data-toggle="collapse" data-target="#example-collapse">
     <span class="navbar-light"><span class="navbar-toggler-icon"></span></span>
   </button>
@@ -24,8 +24,8 @@
 
 
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+        <label for="password">{{__('frontend/profile.Password')}}</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="{{__('frontend/profile.Password')}}">
 
         @if ($errors->has('password'))
       <span class="help text-danger">
@@ -35,9 +35,9 @@
       </div>
 
       <div class="form-group">
-        <label for="password_confirmation">Confirm Password</label>
+        <label for="password_confirmation">{{__('frontend/profile.ConfirmPassword')}}</label>
         <input type="password" class="form-control" name="password_confirmation" id="password_confirmation"
-          placeholder="Confirm Password">
+          placeholder="{{__('frontend/profile.ConfirmPassword')}}">
 
           @if ($errors->has('password_confirmation'))
       <span class="help text-danger">
@@ -47,7 +47,7 @@
       </div>
     <div class="w-100">
 
-      <button type="submit" class="btn btn-primary">Update Profile</button>
+      <button type="submit" class="btn btn-primary">{{__('frontend/profile.UpdateProfile')}}</button>
     </div>
   </div>
 

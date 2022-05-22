@@ -35,7 +35,9 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Name">
+                        <input type="text" class="form-control" name="name_ar" placeholder="Name arabic">
+                        <br>
+                        <input type="text" class="form-control" name="name_en" placeholder="Name English">
                     </div>
                   <div class="float-right">
                     <button type="submit" class="btn btn-primary">Submit</button>

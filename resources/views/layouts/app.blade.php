@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale()=='en'?'ltr':'ltr'}}">
+
 
 <head>
   <meta charset="UTF-8">
@@ -12,14 +13,21 @@
     <link rel="stylesheet" href="{{ asset('css/dropify.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @if(app()->getLocale()=='en')
+      {{--links css en--}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @else
+      {{--links css ar--}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @endif
+
 
   @yield('head')
 </head>
 
 <body class="{{ url()->current() != url('/')? 'bg-light' : '' }}">
 
-    <section class="{{ url()->current() === url('/')? 'top-section' : 'content  ' }}">
+    <section class="{{ url()->current() === route('home')? 'top-section' : 'content  ' }}">
         <div class=" {{ url()->current() != url('/')? 'h-100' : 'container' }}">
 
           <!-- Start Navbar -->
@@ -27,44 +35,55 @@
               @if(url()->current() != url('/'))
             <div class="container">
                 @endif
-                <a class="navbar-brand" href="{{ url('/') }}"><strong>Diamond</strong> Village</a>
+                <a class="navbar-brand" href="{{ url('/') }}"><strong>{{__('frontend/app.Diamond')}} </strong>{{__('frontend/app.Village')}}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
 
+                {{--start button Locale --}}
+                  <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"   aria-haspopup="true" aria-expanded="false">
+                    @if (App::getLocale() == 'ar')
+                    اللغة العربية - AR
+                    @else
+                      English - EN
+                    @endif
+                  </button>
+                {{--end button Locale --}}
+
+
                 <div class="collapse navbar-collapse" id=" navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item {{ url()->current() === url('/')? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/') }}">Home </a>
+                        <a class="nav-link" href="{{ url('/') }}"> {{__('frontend/app.Home')}}</a>
                         </li>
 
                         <li class="nav-item {{ url()->current() === url('/hotels')? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/hotels') }}">Hotels</a>
+                        <a class="nav-link" href="{{ url('/hotels') }}">{{__('frontend/app.Hotels')}}</a>
                         </li>
                         <li class="nav-item {{ url()->current() === url('/villas')? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/villas') }}">Villas</a>
+                        <a class="nav-link" href="{{ url('/villas') }}">{{__('frontend/app.Villas')}}</a>
                         </li>
                         <li class="nav-item {{ url()->current() === url('/hospitals')? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/hospitals') }}">Hospitals</a>
+                        <a class="nav-link" href="{{ url('/hospitals') }}">{{__('frontend/app.Hospitals')}}</a>
                         </li>
                         <li class="nav-item {{ url()->current() === url('/restaurants')? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/restaurants') }}">Restaurants</a>
+                        <a class="nav-link" href="{{ url('/restaurants') }}">{{__('frontend/app.Restaurants')}}</a>
                         </li>
                         <li class="nav-item {{ url()->current() === url('/stores')? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('/stores') }}">Stores</a>
+                        <a class="nav-link" href="{{ url('/stores') }}">{{__('frontend/app.Stores')}}</a>
                         </li>
                         @guest
 
                         <li class="nav-item ml-3">
-                        <a type="button" class="btn  {{ url()->current() === url('/')? 'custom-button' : 'custom-button-2 change-color' }}" href="{{ url('/login') }}">Login</a>
+                        <a type="button" class="btn  {{ url()->current() === url('/')? 'custom-button' : 'custom-button-2 change-color' }}" href="{{ url('/login') }}">{{__('frontend/app.Login')}}</a>
 
                         </li>
                         @else
+                        
                         <li class="nav-item ml-3">
                             <a type="button" class="btn  {{ url()->current() === url('/')? 'custom-button' : 'custom-button-2 change-color' }}" href="{{ url('/dashboard/update') }}">
-
-                                Profile
+                                {{__('frontend/app.Profile')}}
                             </a>
 
                             </li>
@@ -123,40 +142,39 @@
         <div class="col-lg-5 ">
           <div class="d-flex justify-content-between ">
             <div>
-              <h6 class="font-bold secondary mb-3">Services</h6>
+              <h6 class="font-bold secondary mb-3">{{__('frontend/app.Services')}}</h6>
               <ul class="list-unstyled">
                 <li class="mb-2">
                   <a href="{{ url('/hotels') }}"
-                    class="primary text-decoration-none font-text font-regular">Hotels</a>
+                    class="primary text-decoration-none font-text font-regular">{{__('frontend/app.Hotels')}}</a>
                 </li>
                 <li class="mb-2">
                   <a href="{{ url('/villas') }}"
-                    class="primary text-decoration-none font-text font-regular">Villas</a>
+                    class="primary text-decoration-none font-text font-regular">{{__('frontend/app.Villas')}}</a>
                 </li>
                 <li class="mb-2">
                   <a href="{{ url('/hospitals') }}"
-                    class="primary text-decoration-none font-text font-regular">Hospitals</a>
+                    class="primary text-decoration-none font-text font-regular">{{__('frontend/app.Hospitals')}}</a>
                 </li>
 
                 <li class="mb-2">
                   <a href="{{ url('/restaurants') }}"
-                    class="primary text-decoration-none font-text font-regular">Restaurants</a>
+                    class="primary text-decoration-none font-text font-regular">{{__('frontend/app.Restaurants')}}</a>
                 </li>
 
                 <li class="mb-2">
-                  <a href="{{ url('/stores') }}" class="primary text-decoration-none font-text font-regular">Stores</a>
+                  <a href="{{ url('/stores') }}" class="primary text-decoration-none font-text font-regular">{{__('frontend/app.Stores')}}</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h6 class="font-bold secondary mb-3">Quick Links</h6>
+              <h6 class="font-bold secondary mb-3">{{__('frontend/app.QuickLinks')}}</h6>
               <ul class="list-unstyled">
                 <li class="mb-2">
-                  <a href="https://hihome.sa/" class="primary text-decoration-none font-regular">Contact
-                    Us</a>
+                  <a href="https://hihome.sa/" class="primary text-decoration-none font-regular">{{__('frontend/app.ContactUs')}}</a>
                 </li>
                 <li class="mb-2">
-                  <a href="https://hihome.sa/" class="primary text-decoration-none font-regular">About Us</a>
+                  <a href="https://hihome.sa/" class="primary text-decoration-none font-regular">{{__('frontend/app.AboutUs')}}</a>
                 </li>
               </ul>
             </div>

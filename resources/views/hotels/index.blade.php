@@ -8,7 +8,7 @@
   <div class="container">
     <div class="border-bottom pb-2 mb-4">
 
-      <h2>Search Hotels </h2>
+      <h2>{{__('frontend/pages.SearchHotels')}} </h2>
     </div>
     <div class="my-4">
 
@@ -18,7 +18,7 @@
 
     <div class="border-bottom pb-2 mb-4">
 
-        <h2>Hotels </h2>
+        <h2>{{__('frontend/pages.Hotels')}}</h2>
       </div>
 
     @foreach ($hotels as $row)
@@ -38,7 +38,7 @@
         </div>
         <div>
           <a href="{{ url('/hotels/'.$row->id) }}" class="btn btn-primary">
-            Learn More
+            {{__('frontend/pages.LearnMore')}}
 
           </a>
         </div>

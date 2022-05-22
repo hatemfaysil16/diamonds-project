@@ -25,11 +25,12 @@ class PlaceController extends Controller
     public function store(Request $request)
     { 
         $request->validate([
-            'name'    => ['required', 'string', 'max:255'],
+            'name_ar'    => ['required', 'string', 'max:255'],
+            'name_en'    => ['required', 'string', 'max:255'],
         ]);
 
         $place = Place::create([
-            'name' => $request['name'],
+            'name' => ['ar'=>$request['name_ar'],'en'=>$request['name_en']]
         ]);
 
 

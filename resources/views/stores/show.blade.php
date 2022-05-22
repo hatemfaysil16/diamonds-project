@@ -14,11 +14,11 @@
         </p>
 
         <div class="border-top pt-2 ">
-          <h3 class="text-primary">Stores Information</h3>
+          <h3 class="text-primary">{{__('frontend/single_page.StoreInformation')}}</h3>
           <ul class="list-unstyled">
             <li>
               <span class="text-primary w-25">
-                Address Details:
+                {{__('frontend/single_page.AddressDetails')}}
               </span>
               <span>
                 {{ $store->address_details }}
@@ -27,7 +27,7 @@
 
             <li>
               <span class="text-primary w-25">
-                Place:
+                {{__('frontend/single_page.Place')}}
               </span>
               <span>
                 {{ $store->place->name }}
@@ -38,7 +38,7 @@
       </div>
 
       <div class="py-4">
-        <h2 class="text-primary">Store Gallery</h2>
+        <h2 class="text-primary">{{__('frontend/single_page.StoreGallery')}}</h2>
         <div class="slider   slick-slider custom-slider border-bottom py-3">
             @foreach($store->getMedia('store-gallery') as $img)
 

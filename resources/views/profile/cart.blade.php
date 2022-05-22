@@ -19,11 +19,11 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Hotel Title</th>
-          <th scope="col">Room Code</th>
-          <th scope="col">Item Type</th>
-          <th scope="col">Price</th>
-          <th scope="col">Actions</th>
+          <th scope="col">{{__('frontend/profile.HotelTitle')}}</th>
+          <th scope="col">{{__('frontend/profile.RoomCode')}}</th>
+          <th scope="col">{{__('frontend/profile.ItemType')}}</th>
+          <th scope="col">{{__('frontend/profile.Price')}}</th>
+          <th scope="col">{{__('frontend/profile.Actions')}}</th>
 
         </tr>
       </thead>

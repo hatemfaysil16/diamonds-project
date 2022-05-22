@@ -13,12 +13,12 @@
           <div class="col-md-6 col-12 col-md-offset-3">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title text-center text-primary">Register</h5>
+                <h5 class="card-title text-center text-primary">{{__('frontend/Authentication/register.Register')}}</h5>
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" class="form-control" id="first_name" placeholder="Enter First Name" name="first_name">
+                        <label for="first_name">{{__('frontend/Authentication/register.FirstName')}}</label>
+                        <input type="text" class="form-control" id="first_name" placeholder="{{__('frontend/Authentication/register.placeholderFirstName')}}" name="first_name">
 
 
                         @if ($errors->has('first_name'))
@@ -29,8 +29,8 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="first_name">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" name="last_name">
+                        <label for="first_name">{{__('frontend/Authentication/register.LastName')}}</label>
+                        <input type="text" class="form-control" id="last_name" placeholder="{{__('frontend/Authentication/register.placeholderLastName')}}" name="last_name">
 
 
                         @if ($errors->has('last_name'))
@@ -40,11 +40,10 @@
                       @endif
                       </div>
                       <div class="form-group">
-                        <label for="email">Email address</label>
+                        <label for="email">{{__('frontend/Authentication/register.EmailAddress')}}</label>
                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                          placeholder="Enter email" name="email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                          else.</small>
+                          placeholder="{{__('frontend/Authentication/register.placeholderEnteremail')}}" name="email">
+                        <small id="emailHelp" class="form-text text-muted">{{__('frontend/Authentication/register.emailHelp')}}</small>
 
                           @if ($errors->has('email'))
                       <span class="help text-danger">
@@ -53,8 +52,8 @@
                       @endif
                       </div>
                       <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        <label for="password">{{__('frontend/Authentication/register.Password')}}</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="{{__('frontend/Authentication/register.Password')}}">
 
                         @if ($errors->has('password'))
                       <span class="help text-danger">
@@ -64,9 +63,9 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="password_confirmation">Confirm Password</label>
+                        <label for="password_confirmation">{{__('frontend/Authentication/register.ConfirmPassword')}}</label>
                         <input type="password" class="form-control" name="password_confirmation" id="password_confirmation"
-                          placeholder="Confirm Password">
+                          placeholder="{{__('frontend/Authentication/register.ConfirmPassword')}}">
 
                           @if ($errors->has('password_confirmation'))
                       <span class="help text-danger">
@@ -76,7 +75,7 @@
                       </div>
                       <div class="w-100 text-center">
 
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="submit" class="btn btn-primary">{{__('frontend/Authentication/register.Register')}}</button>
                 </form>
 
 

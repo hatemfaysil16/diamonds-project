@@ -19,13 +19,13 @@
                 </div>
             @endif
 
-                <h5 class="card-title text-center text-primary">Forget Password</h5>
+                <h5 class="card-title text-center text-primary">{{__('frontend/Authentication/PasswordReset.ForgetPassword')}}</h5>
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
                     <div class="form-group">
-                      <label for="email">Email address</label>
+                      <label for="email">{{__('frontend/Authentication/PasswordReset.EmailAddress')}}</label>
                       <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                      placeholder="Enter email" name="email">
+                      placeholder="{{__('frontend/Authentication/PasswordReset.PlaceholderEnterEmail')}}" name="email">
 
                     </div>
 
@@ -33,7 +33,7 @@
 
                     <div class="w-100 text-center">
 
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">{{__('frontend/Authentication/PasswordReset.Submit')}}</button>
                     </div>
                   </form>
 

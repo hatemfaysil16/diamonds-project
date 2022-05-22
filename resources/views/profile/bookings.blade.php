@@ -18,12 +18,12 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th scope="col">Booking Reference</th>
-          <th scope="col">Hotel Title</th>
-          <th scope="col">Room Code</th>
-          <th scope="col">Item Type</th>
-          <th scope="col">Price</th>
-          <th scope="col">Booking status</th>
+          <th scope="col">{{__('frontend/profile.BookingReference')}}</th>
+          <th scope="col">{{__('frontend/profile.HotelTitle')}}</th>
+          <th scope="col">{{__('frontend/profile.RoomCode')}}</th>
+          <th scope="col">{{__('frontend/profile.ItemType')}}</th>
+          <th scope="col">{{__('frontend/profile.Price')}}</th>
+          <th scope="col">{{__('frontend/profile.BookingStatus')}}</th>
 
         </tr>
       </thead>

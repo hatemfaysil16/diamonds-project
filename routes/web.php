@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+        //start LaravelLocalization
+
+
 
 
 Auth::routes();
@@ -95,4 +106,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin:auth', 'namespace' => 
     Route::post('hospitals/actions/images/{id}', 'HospitalController@insertPhotos');
     Route::post('hospitals/actions/deleteImage', 'HospitalController@deleteImage');
     Route::resource('orders', 'OrderController');
+});
+
+
+    //end LaravelLocalization
 });

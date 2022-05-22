@@ -16,7 +16,7 @@
               </div>
               <div class="col-8 pl-3">
                 <span class="font-text font-bold"><a href="{{ route('dashboard.update') }}"
-                    class="text-decoration-none  {{ url()->current() === route('dashboard.update') ? 'primary' : 'text-muted' }} dashboard-btn">Profile</a></span>
+                    class="text-decoration-none  {{ url()->current() === route('dashboard.update') ? 'primary' : 'text-muted' }} dashboard-btn">{{__('frontend/profile.Profile')}}</a></span>
               </div>
               <div class="col-2">
                 <span class="float-right custom-border-right d-none d-block"></span>
@@ -32,7 +32,7 @@
               </div>
               <div class="col-8 pl-3">
                 <span class="font-text font-bold"><a href="{{ route('dashboard.update-password') }}"
-                    class="text-decoration-none  {{ url()->current() === route('dashboard.update-password') ? 'primary' : 'text-muted' }} dashboard-btn">Update Password</a></span>
+                    class="text-decoration-none  {{ url()->current() === route('dashboard.update-password') ? 'primary' : 'text-muted' }} dashboard-btn">{{__('frontend/profile.UpdatePassword')}}</a></span>
               </div>
               <div class="col-2">
                 <span class="float-right custom-border-right d-none d-block"></span>
@@ -49,7 +49,7 @@
               </div>
               <div class="col-8 pl-3">
                 <span class="font-text font-bold"><a href="{{ route('dashboard.cart') }}"
-                    class="text-decoration-none  {{ url()->current() === route('dashboard.cart') ? 'primary' : 'text-muted' }} dashboard-btn">Your cart</a></span>
+                    class="text-decoration-none  {{ url()->current() === route('dashboard.cart') ? 'primary' : 'text-muted' }} dashboard-btn">{{__('frontend/profile.cart')}}</a></span>
               </div>
               <div class="col-2">
                 <span class="float-right custom-border-right d-none d-block"></span>
@@ -66,7 +66,7 @@
               </div>
               <div class="col-8 pl-3">
                 <span class="font-text font-bold"><a href="{{ route('dashboard.bookings') }}"
-                    class="text-decoration-none  {{ url()->current() === route('dashboard.bookings') ? 'primary' : 'text-muted' }} dashboard-btn">Your Bookings</a></span>
+                    class="text-decoration-none  {{ url()->current() === route('dashboard.bookings') ? 'primary' : 'text-muted' }} dashboard-btn">{{__('frontend/profile.Bookings')}}</a></span>
               </div>
               <div class="col-2">
                 <span class="float-right custom-border-right d-none d-block"></span>
@@ -80,14 +80,16 @@
               <div class="col-2 ">
                 <i class="fa fa-sign-out fa-02x"></i>
               </div>
+
               <div class="col-8 pl-3">
                 <span class="font-text font-bold"><a
                     class="text-decoration-none text-muted  dashboard-btn pointer"  onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">Logout</a></span>
+                    document.getElementById('logout-form').submit();">{{__('frontend/profile.Logout')}}</a></span>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
               </div>
+              
               <div class="col-2">
                 <span class="float-right custom-border-right d-none d-block"></span>
               </div>

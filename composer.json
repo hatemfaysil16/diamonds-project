@@ -16,7 +16,9 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "laravelcollective/html": "^6.3",
+        "mcamara/laravel-localization": "^1.7",
         "spatie/laravel-medialibrary": "8.0.0",
+        "spatie/laravel-translatable": "^4.6",
         "stripe/stripe-php": "^8.1"
     },
     "require-dev": {

@@ -39,15 +39,19 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Name">
+                        <input type="text" class="form-control" name="name_ar" placeholder="Name arabic">
+                        <br>
+                        <input type="text" class="form-control" name="name_en" placeholder="Name English">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Description</label>
-                        <textarea class="form-control" name="description" rows="3"></textarea>
+                        <textarea class="form-control" name="description_ar" rows="3" placeholder="Description arabic"></textarea>
+                        <br>
+                        <textarea class="form-control" name="description_en" rows="3" placeholder="Description English"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Address Details</label>
-                      <textarea class="form-control" name="address_details" rows="3"></textarea>
+                      <textarea class="form-control" name="address_details" rows="3" ></textarea>
                   </div>
                   <div class="form-group">
                     <div class="form-group col-2 px-0">

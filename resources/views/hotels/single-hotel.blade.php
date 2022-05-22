@@ -14,20 +14,20 @@
         </p>
 
         <div class="border-top pt-2 ">
-          <h3 class="text-primary">Hotel Information</h3>
+          <h3 class="text-primary">{{__('frontend/single_page.HotelInformation')}}</h3>
           <ul class="list-unstyled">
             <li>
               <span class="text-primary w-25">
-                Address Details:
+                
+                {{__('frontend/single_page.AddressDetails')}}
               </span>
               <span>
                 {{ $hotel->address_details }}
               </span>
             </li>
-
             <li>
               <span class="text-primary w-25">
-                Place:
+                {{__('frontend/single_page.Place')}}
               </span>
               <span>
                {{$hotel->place->name}}
@@ -38,7 +38,7 @@
       </div>
 
       <div class="py-4">
-        <h2 class="text-primary">Hotel Gallery</h2>
+        <h2 class="text-primary">{{__('frontend/single_page.HotelGallery')}}</h2>
         <div class="slider   slick-slider custom-slider border-bottom py-3">
             @foreach($hotel->getMedia('hotel-gallery') as $img)
 
@@ -50,7 +50,9 @@
 
       <!-- Start Rooms -->
       <div class="mt-4">
-        <h2 class="text-primary">Hotel Rooms</h2>
+        <h2 class="text-primary"> {{__('frontend/single_page.HotelRooms')}}</h2>
+        
+
       </div>
 
       @foreach($hotel->rooms as $room)
